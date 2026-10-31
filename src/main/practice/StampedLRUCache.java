@@ -34,40 +34,21 @@ public class StampedLRUCache<K, V> {
   // Returns the value stored under key, or null if key is not in the cache. A
   // hit counts as a use of key; a miss uses nothing. Assumes key is not null.
   public V get(K key) {
-    Stamped<V> entry = map.get(key);
-    if (entry == null) {
-      return null;  // a miss uses nothing
-    }
-    entry.lastUsed = ++tick;
-    return entry.value;
+    // TODO: Implement me
+    throw new UnsupportedOperationException("TODO: Implement me");
   }
 
   // Stores value under key and counts as a use of key. If the key is new and the
   // cache is full, evicts the least recently used key first. Assumes key and
   // value are not null.
   public void put(K key, V value) {
-    Stamped<V> entry = map.get(key);
-    if (entry != null) {
-      entry.value = value;  // an update: replace the value, refresh the stamp
-      entry.lastUsed = ++tick;
-      return;
-    }
-    if (map.size() == capacity) {
-      map.remove(leastRecentlyUsed());
-    }
-    map.put(key, new Stamped<>(value, ++tick));
+    // TODO: Implement me
+    throw new UnsupportedOperationException("TODO: Implement me");
   }
 
   // Returns the key with the smallest stamp. Assumes the cache is not empty.
   private K leastRecentlyUsed() {
-    K oldest = null;
-    long oldestUse = Long.MAX_VALUE;
-    for (Map.Entry<K, Stamped<V>> e : map.entries()) {
-      if (e.value().lastUsed < oldestUse) {
-        oldest = e.key();
-        oldestUse = e.value().lastUsed;
-      }
-    }
-    return oldest;
+    // TODO: Implement me
+    throw new UnsupportedOperationException("TODO: Implement me");
   }
 }

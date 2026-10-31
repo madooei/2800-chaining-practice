@@ -42,37 +42,21 @@ public class NodeMapLRUCache<K, V> {
   // Returns the value stored under key, or null if key is not in the cache. A
   // hit counts as a use of key; a miss uses nothing. Assumes key is not null.
   public V get(K key) {
-    Node<K, V> node = map.get(key);
-    if (node == null) {
-      return null;  // a miss uses nothing
-    }
-    moveToFront(node);
-    return node.value;
+    // TODO: Implement me
+    throw new UnsupportedOperationException("TODO: Implement me");
   }
 
   // Stores value under key and counts as a use of key. If the key is new and the
   // cache is full, evicts the least recently used key first. Assumes key and
   // value are not null.
   public void put(K key, V value) {
-    Node<K, V> node = map.get(key);
-    if (node != null) {
-      node.value = value;  // an update: replace the value, refresh the recency
-      moveToFront(node);
-      return;
-    }
-    if (map.size() == capacity) {
-      Node<K, V> oldest = tail.prev;  // the least recently used, sitting at the back
-      unlink(oldest);
-      map.remove(oldest.key);
-    }
-    Node<K, V> newNode = new Node<>(key, value);
-    linkAtFront(newNode);
-    map.put(key, newNode);
+    // TODO: Implement me
+    throw new UnsupportedOperationException("TODO: Implement me");
   }
 
   private void moveToFront(Node<K, V> node) {
-    unlink(node);
-    linkAtFront(node);
+    // TODO: Implement me
+    throw new UnsupportedOperationException("TODO: Implement me");
   }
 
   private void unlink(Node<K, V> node) {

@@ -1,7 +1,6 @@
 package map;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 /**
  * A hash table implementation of the Map ADT that resolves collisions by
@@ -134,12 +133,14 @@ public class HashMap<K, V> implements Map<K, V> {
 
   @Override
   public Iterator<K> iterator() {
-    return new KeyIterator();
+    // TODO: Implement me
+    throw new UnsupportedOperationException("TODO: Implement me");
   }
 
   @Override
   public Iterable<Map.Entry<K, V>> entries() {
-    return new Entries();
+    // TODO: Implement me
+    throw new UnsupportedOperationException("TODO: Implement me");
   }
 
   // Turns a key into the slot of its bucket: hash, then compress to the array's range.
@@ -175,36 +176,27 @@ public class HashMap<K, V> implements Map<K, V> {
 
   // Visits each slot in order and walks its bucket, returning each entry's key.
   private class KeyIterator implements Iterator<K> {
-    private Entry<K, V> current;  // the entry whose key comes next, or null when the walk is done
-    private int slot = 0;         // the next slot to try when the current bucket runs out
 
     KeyIterator() {
-      advance();  // position current on the first entry, if there is one
+      // TODO: Implement me
+      throw new UnsupportedOperationException("TODO: Implement me");
     }
 
     private void advance() {
-      if (current != null) {
-        current = current.next;    // the next entry in the same bucket
-      }
-      while (current == null && slot < buckets.length) {
-        current = buckets[slot];   // the head of the next bucket, or null for an empty slot
-        slot++;
-      }
+      // TODO: Implement me
+      throw new UnsupportedOperationException("TODO: Implement me");
     }
 
     @Override
     public boolean hasNext() {
-      return current != null;
+      // TODO: Implement me
+      throw new UnsupportedOperationException("TODO: Implement me");
     }
 
     @Override
     public K next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      K key = current.key;
-      advance();
-      return key;
+      // TODO: Implement me
+      throw new UnsupportedOperationException("TODO: Implement me");
     }
   }
 
@@ -212,42 +204,34 @@ public class HashMap<K, V> implements Map<K, V> {
   private class Entries implements Iterable<Map.Entry<K, V>> {
     @Override
     public Iterator<Map.Entry<K, V>> iterator() {
-      return new EntryIterator();
+      // TODO: Implement me
+      throw new UnsupportedOperationException("TODO: Implement me");
     }
   }
 
   // Visits each slot in order and walks its bucket, returning each entry itself.
   private class EntryIterator implements Iterator<Map.Entry<K, V>> {
-    private Entry<K, V> current;  // the entry that comes next, or null when the walk is done
-    private int slot = 0;         // the next slot to try when the current bucket runs out
 
     EntryIterator() {
-      advance();  // position current on the first entry, if there is one
+      // TODO: Implement me
+      throw new UnsupportedOperationException("TODO: Implement me");
     }
 
     private void advance() {
-      if (current != null) {
-        current = current.next;    // the next entry in the same bucket
-      }
-      while (current == null && slot < buckets.length) {
-        current = buckets[slot];   // the head of the next bucket, or null for an empty slot
-        slot++;
-      }
+      // TODO: Implement me
+      throw new UnsupportedOperationException("TODO: Implement me");
     }
 
     @Override
     public boolean hasNext() {
-      return current != null;
+      // TODO: Implement me
+      throw new UnsupportedOperationException("TODO: Implement me");
     }
 
     @Override
     public Map.Entry<K, V> next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      Entry<K, V> entry = current;
-      advance();
-      return entry;
+      // TODO: Implement me
+      throw new UnsupportedOperationException("TODO: Implement me");
     }
   }
 }
