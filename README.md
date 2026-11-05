@@ -46,8 +46,9 @@ There is no demo program for these problems; the tests are how you check your wo
 
 ## What's here
 
-- `map.Map<K, V>`: an unchanged copy of the `Map` interface.
-- `map.HashMap<K, V>`: the chapter's hash table. Its `iterator()` and `entries()` are the first problem.
-- `practice.StampedLRUCache<K, V>`, `practice.RecencyListLRUCache<K, V>`, and `practice.NodeMapLRUCache<K, V>`: the three solutions to the LRU cache problem. Each has `get(key)` and `put(key, value)`, and a capacity set when it is created.
-- `map.HashMapTest`: the Map contract suite, run against `HashMap`, plus tests of the order the iterators visit the keys.
-- `practice.LRUCacheTest`: the abstract scenario suite for the LRU cache. It has one subclass per solution, so you can test one solution alone.
+- `map.Map<K, V>` — an unchanged copy of the `Map` interface.
+- `map.HashMap<K, V>` — the chapter's hash table. Its `iterator()` and `entries()` are the first problem.
+- `practice.StampedLRUCache<K, V>`, `practice.RecencyListLRUCache<K, V>`, and `practice.NodeMapLRUCache<K, V>` — the three solutions to the LRU cache problem. Each has `get(key)` and `put(key, value)`, and a capacity set when it is created.
+- `map.MapTest` — the abstract Map contract suite.
+- `map.HashMapTest` — runs the contract suite against `HashMap`, plus tests of the order the iterators visit the keys.
+- `practice.LRUCacheTest` — the abstract scenario suite for the LRU cache. It has one subclass per solution, so you can test one solution alone.

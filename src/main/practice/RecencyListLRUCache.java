@@ -23,13 +23,14 @@ public class RecencyListLRUCache<K, V> {
     }
   }
 
-  private final Map<K, V> map = new HashMap<>();
+  private final Map<K, V> map;
   private final Node<K> head;  // front sentinel; head.next is the most recently used
   private final Node<K> tail;  // back sentinel; tail.prev is the least recently used
   private final int capacity;
 
   // Assumes capacity is at least one.
   public RecencyListLRUCache(int capacity) {
+    map = new HashMap<>();
     this.capacity = capacity;
     head = new Node<>(null);
     tail = new Node<>(null);
@@ -69,7 +70,7 @@ public class RecencyListLRUCache<K, V> {
   // Moves the node holding key to the front. Assumes key is in the list.
   private void moveToFront(K key) {
     Node<K> node = head.next;
-    while (!node.key.equals(key)) {  // walk from the front to the key's node
+    while (!node.key.equals(key)) {  // traverse from the front to the key's node
       node = node.next;
     }
     unlink(node);
