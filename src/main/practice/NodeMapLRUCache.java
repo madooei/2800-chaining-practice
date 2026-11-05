@@ -25,13 +25,14 @@ public class NodeMapLRUCache<K, V> {
     }
   }
 
-  private final Map<K, Node<K, V>> map = new HashMap<>();  // each key -> its node in the list
+  private final Map<K, Node<K, V>> map;  // each key -> its node in the list
   private final Node<K, V> head;  // front sentinel; head.next is the most recently used
   private final Node<K, V> tail;  // back sentinel; tail.prev is the least recently used
   private final int capacity;
 
   // Assumes capacity is at least one.
   public NodeMapLRUCache(int capacity) {
+    map = new HashMap<>();
     this.capacity = capacity;
     head = new Node<>(null, null);
     tail = new Node<>(null, null);

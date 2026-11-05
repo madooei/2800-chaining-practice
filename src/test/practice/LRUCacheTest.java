@@ -54,6 +54,8 @@ public abstract class LRUCacheTest {
     put(2, "bat");
     put(3, "cow");
     assertEquals("ant", get(1));
+    assertEquals("bat", get(2));
+    assertEquals("cow", get(3));
   }
 
   @Test
@@ -128,6 +130,8 @@ public abstract class LRUCacheTest {
     put(3, "cow");
     put(2, "bee");
     assertEquals("ant", get(1));
+    assertEquals("bee", get(2));
+    assertEquals("cow", get(3));
   }
 
   @Test
@@ -164,7 +168,9 @@ public abstract class LRUCacheTest {
     for (int i = 1; i <= 10; i++) {
       put(i, "v" + i);
     }
-    assertNull(get(7));
+    for (int i = 1; i <= 7; i++) {
+      assertNull(get(i));
+    }
   }
 
   @Test
@@ -174,5 +180,7 @@ public abstract class LRUCacheTest {
       put(i, "v" + i);
     }
     assertEquals("v8", get(8));
+    assertEquals("v9", get(9));
+    assertEquals("v10", get(10));
   }
 }

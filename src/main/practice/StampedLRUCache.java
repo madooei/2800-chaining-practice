@@ -22,13 +22,15 @@ public class StampedLRUCache<K, V> {
     }
   }
 
-  private final Map<K, Stamped<V>> map = new HashMap<>();
+  private final Map<K, Stamped<V>> map;
   private final int capacity;
-  private long tick = 0;  // advances on each hit or put
+  private long tick;  // advances on each hit or put
 
   // Assumes capacity is at least one.
   public StampedLRUCache(int capacity) {
+    map = new HashMap<>();
     this.capacity = capacity;
+    tick = 0;
   }
 
   // Returns the value stored under key, or null if key is not in the cache. A
