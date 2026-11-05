@@ -18,16 +18,16 @@ public class HashMap<K, V> implements Map<K, V> {
 
   private static final double MAX_LOAD_FACTOR = 0.75;
 
-  private Entry<K, V>[] buckets;  // one bucket per slot, or null when the slot is empty
-  private int size;               // how many pairs the map holds
-  private int primeIndex;         // the current capacity is PRIMES[primeIndex]
+  private Node<K, V>[] buckets;  // one bucket per slot, or null when the slot is empty
+  private int size;              // how many pairs the map holds
+  private int primeIndex;        // the current capacity is PRIMES[primeIndex]
 
-  private static class Entry<K, V> implements Map.Entry<K, V> {
+  private static class Node<K, V> implements Map.Entry<K, V> {
     K key;
     V value;
-    Entry<K, V> next;
+    Node<K, V> next;
 
-    Entry(K key, V value) {
+    Node(K key, V value) {
       this.key = key;
       this.value = value;
     }
@@ -43,12 +43,12 @@ public class HashMap<K, V> implements Map<K, V> {
     }
   }
 
-  // buckets only ever holds Entry<K, V>, so the cast is safe.
+  // buckets only ever holds Node<K, V>, so the cast is safe.
   @SuppressWarnings("unchecked")
   public HashMap() {
-    buckets = (Entry<K, V>[]) new Entry[PRIMES[0]];  // start with 7 slots
-    size = 0;                                        // the map starts empty
-    primeIndex = 0;                                  // the capacity is PRIMES[0]
+    buckets = (Node<K, V>[]) new Node[PRIMES[0]];  // start with 7 slots
+    size = 0;                                      // the map starts empty
+    primeIndex = 0;                                // the capacity is PRIMES[0]
   }
 
   @Override
@@ -62,19 +62,19 @@ public class HashMap<K, V> implements Map<K, V> {
       throw new IllegalArgumentException();
     }
     int i = indexFor(key);
-    Entry<K, V> previous = null;
-    for (Entry<K, V> e = buckets[i]; e != null; e = e.next) {
+    Node<K, V> previous = null;
+    for (Node<K, V> e = buckets[i]; e != null; e = e.next) {
       if (e.key.equals(key)) {
         e.value = value;  // key present; replace its value
         return false;
       }
       previous = e;
     }
-    Entry<K, V> newEntry = new Entry<>(key, value);
+    Node<K, V> newNode = new Node<>(key, value);
     if (previous == null) {
-      buckets[i] = newEntry;     // the bucket was empty
+      buckets[i] = newNode;     // the bucket was empty
     } else {
-      previous.next = newEntry;  // append after the last entry
+      previous.next = newNode;  // append after the last entry
     }
     size++;
     if (size > MAX_LOAD_FACTOR * buckets.length) {  // the load factor passed the threshold
@@ -89,7 +89,7 @@ public class HashMap<K, V> implements Map<K, V> {
       throw new IllegalArgumentException();
     }
     int i = indexFor(key);
-    for (Entry<K, V> e = buckets[i]; e != null; e = e.next) {
+    for (Node<K, V> e = buckets[i]; e != null; e = e.next) {
       if (e.key.equals(key)) {
         return e.value;  // found the key
       }
@@ -103,7 +103,7 @@ public class HashMap<K, V> implements Map<K, V> {
       throw new IllegalArgumentException();
     }
     int i = indexFor(key);
-    for (Entry<K, V> e = buckets[i]; e != null; e = e.next) {
+    for (Node<K, V> e = buckets[i]; e != null; e = e.next) {
       if (e.key.equals(key)) {
         return true;
       }
@@ -117,8 +117,8 @@ public class HashMap<K, V> implements Map<K, V> {
       throw new IllegalArgumentException();
     }
     int i = indexFor(key);
-    Entry<K, V> previous = null;
-    for (Entry<K, V> e = buckets[i]; e != null; e = e.next) {
+    Node<K, V> previous = null;
+    for (Node<K, V> e = buckets[i]; e != null; e = e.next) {
       if (e.key.equals(key)) {
         if (previous == null) {
           buckets[i] = e.next;      // the match was the head of the bucket
@@ -155,19 +155,19 @@ public class HashMap<K, V> implements Map<K, V> {
   // constructor.
   @SuppressWarnings("unchecked")
   private void rehash() {
-    Entry<K, V>[] old = buckets;
+    Node<K, V>[] old = buckets;
     int capacity;
     if (primeIndex + 1 < PRIMES.length) {
       capacity = PRIMES[++primeIndex];   // the next prime, already more than double
     } else {
       capacity = 2 * old.length + 1;     // past the table: double and add one to stay odd
     }
-    buckets = (Entry<K, V>[]) new Entry[capacity];
+    buckets = (Node<K, V>[]) new Node[capacity];
 
-    for (Entry<K, V> head : old) {                          // each old bucket
-      Entry<K, V> e = head;
+    for (Node<K, V> head : old) {                           // each old bucket
+      Node<K, V> e = head;
       while (e != null) {
-        Entry<K, V> next = e.next;                          // save the rest before relinking
+        Node<K, V> next = e.next;                           // save the rest before relinking
         int i = Math.floorMod(e.key.hashCode(), capacity);  // the entry's index in the new array
         e.next = buckets[i];                                // move e to the front of its new bucket
         buckets[i] = e;
