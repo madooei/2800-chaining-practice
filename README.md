@@ -40,9 +40,9 @@ code/
 ## How to compile and run
 
 - `scripts/test.sh` compiles everything and runs the full JUnit suite.
-- `scripts/test.sh practice.NodeMapLRUCacheTest` compiles everything and runs only that test class. Use this while you work on one problem or one solution and the others are still empty. The class names are listed in the layout above.
+- `scripts/test.sh practice.NodeMapLRUCacheTest` compiles everything and runs only that test class. Use this while you work on one solution and the others are still empty. The class names are listed in the layout above.
 
-There is no demo program for these problems; the tests are how you check your work.
+There is no demo program for this problem; the tests are how you check your work.
 
 ## What's here
 
