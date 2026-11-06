@@ -1,6 +1,6 @@
 # Separate Chaining — Practice
 
-Two practice problems: add the key and entry iterators to the chapter's `HashMap`, and build a least recently used (LRU) cache whose `get` and `put` do not slow down as the cache fills. The LRU cache has three solutions, each a step toward the last one. Each problem has a JUnit suite.
+One practice problem: build a least recently used (LRU) cache whose `get` and `put` do not slow down as the cache fills. It has three solutions, each a step toward the last one, and a JUnit suite.
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ code/
     main/
       map/
         Map.java                     # the Map ADT (copied from the chapter)
-        HashMap.java                 # the chapter's HashMap, with its iterators
+        HashMap.java                 # the chapter's HashMap
       practice/
         StampedLRUCache.java         # a map that stamps each entry with its last use
         RecencyListLRUCache.java     # a map plus a recency list of keys
@@ -27,7 +27,7 @@ code/
     test/
       map/
         MapTest.java                 # abstract: the Map contract suite
-        HashMapTest.java             # runs it against HashMap, plus the iteration order
+        HashMapTest.java             # runs it against HashMap
       practice/
         LRUCacheTest.java            # abstract: the LRU cache scenarios
         StampedLRUCacheTest.java     # runs them against StampedLRUCache
@@ -47,8 +47,8 @@ There is no demo program for these problems; the tests are how you check your wo
 ## What's here
 
 - `map.Map<K, V>` — an unchanged copy of the `Map` interface.
-- `map.HashMap<K, V>` — the chapter's hash table. Its `iterator()` and `entries()` are the first problem.
+- `map.HashMap<K, V>` — the chapter's hash table, complete.
 - `practice.StampedLRUCache<K, V>`, `practice.RecencyListLRUCache<K, V>`, and `practice.NodeMapLRUCache<K, V>` — the three solutions to the LRU cache problem. Each has `get(key)` and `put(key, value)`, and a capacity set when it is created.
 - `map.MapTest` — the abstract Map contract suite.
-- `map.HashMapTest` — runs the contract suite against `HashMap`, plus tests of the order the iterators visit the keys.
+- `map.HashMapTest` — runs the contract suite against `HashMap`.
 - `practice.LRUCacheTest` — the abstract scenario suite for the LRU cache. It has one subclass per solution, so you can test one solution alone.
