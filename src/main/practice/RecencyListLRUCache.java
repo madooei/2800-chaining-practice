@@ -77,11 +77,13 @@ public class RecencyListLRUCache<K, V> {
     linkAtFront(node);
   }
 
+  // Removes node from the recency list.
   private void unlink(Node<K> node) {
     node.prev.next = node.next;
     node.next.prev = node.prev;
   }
 
+  // Links node at the front of the recency list, as the most recently used.
   private void linkAtFront(Node<K> node) {
     node.prev = head;
     node.next = head.next;

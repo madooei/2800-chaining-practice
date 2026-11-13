@@ -4,7 +4,7 @@ One practice problem: build a least recently used (LRU) cache whose `get` and `p
 
 ## Prerequisites
 
-- JDK 17+
+- JDK 17+ (JUnit 6 requires it).
 - The JUnit jar is already vendored in `lib/`; there is nothing to download.
 
 ## Repository layout
@@ -27,7 +27,7 @@ code/
     test/
       map/
         MapTest.java                 # abstract: the Map contract suite
-        HashMapTest.java             # runs it against HashMap
+        HashMapTest.java             # runs it against HashMap, then checks the buckets by reflection
       practice/
         LRUCacheTest.java            # abstract: the LRU cache scenarios
         StampedLRUCacheTest.java     # runs them against StampedLRUCache
@@ -50,5 +50,5 @@ There is no demo program for this problem; the tests are how you check your work
 - `map.HashMap<K, V>` — the chapter's hash table, complete.
 - `practice.StampedLRUCache<K, V>`, `practice.RecencyListLRUCache<K, V>`, and `practice.NodeMapLRUCache<K, V>` — the three solutions to the LRU cache problem. Each has `get(key)` and `put(key, value)`, and a capacity set when it is created.
 - `map.MapTest` — the abstract Map contract suite.
-- `map.HashMapTest` — runs the contract suite against `HashMap`.
+- `map.HashMapTest` — runs the contract suite against `HashMap`, then checks the slots and bucket order the chaining chapter draws, read through reflection, and the order the iterators visit the keys.
 - `practice.LRUCacheTest` — the abstract scenario suite for the LRU cache. It has one subclass per solution, so you can test one solution alone.
