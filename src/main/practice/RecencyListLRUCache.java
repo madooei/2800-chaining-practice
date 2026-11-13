@@ -59,15 +59,15 @@ public class RecencyListLRUCache<K, V> {
     throw new UnsupportedOperationException("TODO: Implement me");
   }
 
+  // Removes node from the recency list.
   private void unlink(Node<K> node) {
-    node.prev.next = node.next;
-    node.next.prev = node.prev;
+    // TODO: Implement me
+    throw new UnsupportedOperationException("TODO: Implement me");
   }
 
+  // Links node at the front of the recency list, as the most recently used.
   private void linkAtFront(Node<K> node) {
-    node.prev = head;
-    node.next = head.next;
-    head.next.prev = node;
-    head.next = node;
+    // TODO: Implement me
+    throw new UnsupportedOperationException("TODO: Implement me");
   }
 }
