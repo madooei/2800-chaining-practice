@@ -24,6 +24,10 @@ code/
         StampedLRUCache.java         # a map that stamps each entry with its last use
         RecencyListLRUCache.java     # a map plus a recency list of keys
         NodeMapLRUCache.java         # a map from each key to its node in a recency list
+      demo/                          # one demo per solution class
+        StampedLRUCacheDemo.java
+        RecencyListLRUCacheDemo.java
+        NodeMapLRUCacheDemo.java
     test/
       map/
         MapTest.java                 # abstract: the Map contract suite
@@ -35,20 +39,21 @@ code/
         NodeMapLRUCacheTest.java     # runs them against NodeMapLRUCache
   scripts/
     test.sh                          # compile and run the JUnit tests
+    run.sh                           # compile and run one demo
 ```
 
 ## How to compile and run
 
 - `scripts/test.sh` compiles everything and runs the full JUnit suite.
 - `scripts/test.sh practice.NodeMapLRUCacheTest` compiles everything and runs only that test class. Use this while you work on one solution and the others are still empty. The class names are listed in the layout above.
-
-There is no demo program for this problem; the tests are how you check your work.
+- `scripts/run.sh demo.NodeMapLRUCacheDemo` compiles everything and runs that one demo. Every solution class has its own demo, `<Class>Demo`.
 
 ## What's here
 
 - `map.Map<K, V>` — an unchanged copy of the `Map` interface.
 - `map.HashMap<K, V>` — the chapter's hash table, complete.
 - `practice.StampedLRUCache<K, V>`, `practice.RecencyListLRUCache<K, V>`, and `practice.NodeMapLRUCache<K, V>` — the three solutions to the LRU cache problem. Each has `get(key)` and `put(key, value)`, and a capacity set when it is created.
+- `demo.StampedLRUCacheDemo`, `demo.RecencyListLRUCacheDemo`, and `demo.NodeMapLRUCacheDemo` — one demo per solution class, each on the capacity-3 trace from the problem.
 - `map.MapTest` — the abstract Map contract suite.
 - `map.HashMapTest` — runs the contract suite against `HashMap`, then checks the slots and bucket order the chaining chapter draws, read through reflection, and the order the iterators visit the keys.
 - `practice.LRUCacheTest` — the abstract scenario suite for the LRU cache. It has one subclass per solution, so you can test one solution alone.
