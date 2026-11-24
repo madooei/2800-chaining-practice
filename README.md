@@ -48,7 +48,7 @@ code/
 - `scripts/test.sh practice.NodeMapLRUCacheTest` compiles everything and runs only that test class. Use this while you work on one solution and the others are still empty. The class names are listed in the layout above.
 - `scripts/run.sh demo.NodeMapLRUCacheDemo` compiles everything and runs that one demo. Every solution class has its own demo, `<Class>Demo`.
 
-## What's here
+## Contents
 
 - `map.Map<K, V>` — an unchanged copy of the `Map` interface.
 - `map.HashMap<K, V>` — the chapter's hash table, complete.
